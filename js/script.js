@@ -14,43 +14,39 @@
 
 
 // Espongo i 5 numeri casuali all'utente in un array
-// generandoli con l'apposita Funzione
+// generandoli con l'apposita Funzione in modo che se volessi aumentare
+//il range di numeri oppure la quantità, potre farlo facilmente.
 //non include numeri doppi
 
-var numeriGenerati = generaNumeriCasuali(5, 100);
+var numeriGenerati = generaNumeriCasuali(10, 100);
 
 var mostroNumeri = alert('Memorizza i seguenti numeri: ' + numeriGenerati);
 
 console.log('array numeri casuali: ' + numeriGenerati);
 
 
-// Faccio partire il conteggio e dopo i 30 secondi (3 secondi per debug) chiedo i numeri
+// Faccio partire il conteggio e dopo i 30 secondi (settato a 3 secondi per debug) chiedo i numeri
 setTimeout(function(){
   // Creo gli array che poi saranno automaticamente popolati
 
-
-  var lista = [];
   var arrayNumeriCorretti = [];
-  var arrayNumeriInseriti = [];
   var contatore = 0;
 
+// Chiedo all'utente di inserire il quantitativo di numeri numeri in base alla lunghezza settata prima dalla funzione generaNumeriCasuali
   for (var j = 0; j < numeriGenerati.length; j++) {
-    lista.push(numeriGenerati[j]);
     // Chiedo all'utente di inserire i numeri precedentemente visti
     var numeroUtente = parseInt(prompt('Inserisci i numeri che hai visto prima'));
-    arrayNumeriInseriti.push(numeroUtente);
 
-    // Se il numero corrisponde lo metto in un array a parte
-    if (numeriGenerati[j] == numeroUtente) {
+    // Se il numero corrisponde lo metto nell'array dei numeri corretti.
+    if (numeriGenerati.includes(numeroUtente)) {
       arrayNumeriCorretti.push(numeroUtente);
+      console.log('sono entrato nella if');
       contatore++;
     }
 
   }
 
-
-  console.log('Questa è la lista numeri inseriti' + lista);
-  console.log('Questo sono i numeri inseriti' + arrayNumeriInseriti);
+  // Comunico all'utente i numeri indovinati e quali
   console.log('Hai indovinato ' + contatore + ' numeri. Questi sono i numero che hai indovinato ' + arrayNumeriCorretti);
 
 
